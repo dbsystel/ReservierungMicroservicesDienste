@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="com.db.systel.bachelorproject2016.seatoverviewservice" level="ALL"></logger>
+    <logger name="com.db.systel.bachelorproject2016.seatoverviewservice.api" level="ALL"></logger>
+    <logger name="com.db.systel.bachelorproject2016.seatoverviewservice.clients" level="ALL"></logger>
+    <logger name="com.db.systel.bachelorproject2016.seatoverviewservice.domainmodel.data" level="ALL"></logger>
+    <logger name="com.db.systel.bachelorproject2016.seatoverviewservice.domainmodel.logic" level="ALL"></logger>
+</configuration>

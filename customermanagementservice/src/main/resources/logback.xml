@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="com.db.systel.bachelorproject2016.customermanagementservice" level="ALL"></logger>
+    <logger name="com.db.systel.bachelorproject2016.customermanagementservice.api" level="ALL"></logger>
+    <logger name="com.db.systel.bachelorproject2016.customermanagementservice.domainmodel.logic" level="ALL"></logger>
+</configuration>

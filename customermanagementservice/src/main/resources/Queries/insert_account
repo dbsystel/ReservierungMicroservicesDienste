@@ -1,0 +1,2 @@
+INSERT INTO account (username, password, customer_id) 
+VALUES (?, ?, ?);

@@ -1,0 +1,22 @@
+filebeat:
+  prospectors:
+    -
+      paths:
+        - /var/log/*/*.log
+      input_type: log
+      document_type: container-syslog
+    -
+      paths: 
+        - /tmp/log/PricingService/*.log
+      input_type: log
+      document_type: PricingService
+
+output:
+  logstash:
+    hosts: ["10.43.116.179:5044"]
+
+shipper:
+
+logging:
+  to_syslog: false
+  to_files: false

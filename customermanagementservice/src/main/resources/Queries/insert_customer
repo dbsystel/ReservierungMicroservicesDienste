@@ -1,0 +1,2 @@
+INSERT INTO customer (first_name, last_name, street, house_number, post_code, city, e_mail_address, payment_method) 
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);

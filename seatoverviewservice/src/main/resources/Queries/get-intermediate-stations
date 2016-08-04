@@ -1,0 +1,7 @@
+SELECT station.name AS station_name, route_station.time_of_stop AS time_of_stop
+ FROM train_connection JOIN route_station JOIN station
+ WHERE train_connection.route_id = route_station.route_id
+ AND train_connection.id = ?
+ AND route_station.station_id = station.id
+ AND route_station.time_of_stop < ?
+ AND route_station.time_of_stop > ?;

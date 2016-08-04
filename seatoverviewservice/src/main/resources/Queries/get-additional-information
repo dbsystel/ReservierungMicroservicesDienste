@@ -1,0 +1,4 @@
+SELECT train.number, train.category 
+FROM train_connection JOIN train
+WHERE train_connection.train_id = train.id
+AND train_connection.id = ?;

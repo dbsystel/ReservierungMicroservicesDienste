@@ -1,0 +1,5 @@
+SELECT * FROM partial_booking
+ WHERE booking_id IN ?
+ AND train_connection_id = ?
+ AND departure_time > ?
+ AND departure_time < ?;

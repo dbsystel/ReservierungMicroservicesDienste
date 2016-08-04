@@ -1,0 +1,1 @@
+SELECT * FROM customer JOIN account WHERE customer.id = account.customer_id AND password = ? AND username = ?;

@@ -1,0 +1,4 @@
+UPDATE partial_booking SET state = "invalid"
+ WHERE train_connection_id = ? 
+  AND departure_time > ?
+  AND departure_time < ?;

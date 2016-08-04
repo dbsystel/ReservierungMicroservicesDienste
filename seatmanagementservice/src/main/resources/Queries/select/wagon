@@ -1,0 +1,1 @@
+SELECT seat.id FROM wagon JOIN seat WHERE wagon.id = seat.wagon_id AND wagon.id = ?;

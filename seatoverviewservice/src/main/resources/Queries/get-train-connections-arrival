@@ -1,0 +1,32 @@
+SELECT (tc_over_dest.time_of_stop + tc_over_start.departure_time) AS arrival, (tc_over_start.time_of_stop + tc_over_start.departure_time) AS departure, tc_over_dest.id AS id, 
+tc_over_start.departure_time AS departure_time, tc_over_dest.time_of_stop AS arrival_without_offset, tc_over_start.time_of_stop AS departure_without_offset 
+ FROM (
+        SELECT train_connection.id AS id, routes_over_start.time_of_stop AS time_of_stop, train_connection.departure_time AS 	
+ departure_time
+        FROM train_connection 
+        JOIN (
+                SELECT DISTINCT route_station.route_id AS route_id, route_station.time_of_stop as time_of_stop 
+                FROM route_station 
+                JOIN station 
+                WHERE route_station.station_id = station.id AND station.name = ?
+             )  AS routes_over_start 
+        WHERE   routes_over_start.route_id = train_connection.route_id
+	AND train_connection.day_of_week = ?
+     ) As tc_over_start 
+     
+ JOIN (
+        SELECT train_connection.id AS id, routes_over_dest.time_of_stop AS time_of_stop
+        FROM train_connection 
+        JOIN (
+                SELECT DISTINCT route_station.route_id AS route_id, route_station.time_of_stop as time_of_stop 
+                FROM route_station 
+                JOIN   station 
+                WHERE route_station.station_id = station.id AND station.name = ?
+            ) AS routes_over_dest 
+        WHERE   routes_over_dest.route_id = train_connection.route_id
+	AND train_connection.day_of_week = ?
+) As tc_over_dest 
+ WHERE tc_over_dest.id = tc_over_start.id
+ AND  tc_over_dest.time_of_stop > tc_over_start.time_of_stop 
+ AND  tc_over_dest.time_of_stop + tc_over_start.departure_time >= ?
+ AND  tc_over_dest.time_of_stop + tc_over_start.departure_time <= ? ;

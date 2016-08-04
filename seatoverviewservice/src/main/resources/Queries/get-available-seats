@@ -1,0 +1,16 @@
+SELECT seat.id AS seat_id
+ FROM seat JOIN wagon_train_connection JOIN train_connection
+ WHERE seat.wagon_id = wagon_train_connection.wagon_id
+ AND wagon_train_connection.train_connection_id = train_connection.id
+ AND train_connection.id = ?
+ AND seat.id NOT IN
+ (SELECT seat_id
+ FROM seat_allocation
+ WHERE seat_allocation.train_connection_id = ?
+ AND 
+   (
+ (seat_allocation.allocated_from  >= ? AND seat_allocation.allocated_from  < ?)
+ 	OR
+ (seat_allocation.allocated_until  > ? AND seat_allocation.allocated_until <= ?)
+  	OR
+ (seat_allocation.allocated_from  <= ? AND seat_allocation.allocated_until >= ?)));

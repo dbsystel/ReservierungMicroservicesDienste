@@ -1,0 +1,4 @@
+SELECT DISTINCT seat.id FROM wagon JOIN seat JOIN wagon_train_connection JOIN train_connection 
+  WHERE wagon.id = seat.wagon_id AND wagon_train_connection.wagon_id = wagon.id
+  AND wagon_train_connection.train_connection_id = train_connection.id
+  AND train_connection.train_id = ?;

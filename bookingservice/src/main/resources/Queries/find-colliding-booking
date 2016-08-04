@@ -1,0 +1,10 @@
+SELECT * FROM partial_booking
+ WHERE partial_booking.train_connection_id = ?
+ AND  partial_booking.seat_id = ?
+ AND 
+ (
+ (partial_booking.departure_time  >= ? AND partial_booking.departure_time  < ?)
+ 	OR
+ (partial_booking.arrival_time  > ? AND partial_booking.arrival_time <= ?)
+  	OR
+ (partial_booking.departure_time  < ? AND partial_booking.arrival_time > ?));

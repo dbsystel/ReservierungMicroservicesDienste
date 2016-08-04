@@ -1,0 +1,2 @@
+UPDATE seat SET state = "disabled"
+ WHERE id = ?;
